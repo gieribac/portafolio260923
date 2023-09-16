@@ -31,11 +31,16 @@
             content: "Texto de ejemplo 6"
         },
     ]
+
+    const showAlert = (m: string):void => {
+        alert(m);
+    }
              
 </script>
 <template>
     <div class="container">
-        <PostDetail v-for="e in info" :key="e.title" :title="e.title" :content="e.content"/>
+        <PostDetail v-for="e in info" :key="e.title" :title="e.title" 
+        :content="e.content" @sayHi="showAlert"/>
     
     </div>
 </template>

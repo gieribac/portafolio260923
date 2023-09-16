@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import {defineProps} from 'vue';
+    import {defineProps, defineEmits, Ref, ref} from 'vue';
     const props = defineProps({
       title: {
         type: String,
@@ -10,11 +10,19 @@
         default: "no hay información para mostrar",
       },
     });
+    const emit = defineEmits(["sayHi"])
+    const alClick = ():void => {
+        emit("sayHi",m.value)
+
+    }
+    let m:Ref<string> = ref("");
 </script>
 <template >
     <div class="post">
-        <h4>{{props.title}}</h4>
-        <p>{{props.content}}</p>
+        <h4 v-custom-size.xxl.blue>{{props.title}}</h4>
+        <p v-custom-size:sm>{{props.content}}</p>
+        <input type="text" v-model="m">
+        <button @click="alClick">Saludar</button>
     </div>
 </template>
 <style scoped>
