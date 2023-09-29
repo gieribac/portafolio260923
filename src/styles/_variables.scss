@@ -1,1 +1,16 @@
-$primaryColor: #2c3e50
+$green1: #023430;
+$green2: #02734A;
+$green3: #04BF55;
+$green4: #05F258;
+$ctextb:  #001E2B;
+$ctextw: #B8C4C2;
+
+@import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
+$domine: 'Domine', serif;
+
+
+@function calcular-ancho-contenedor($ancho-pantalla) {
+    $proporcion-aurea: 1.618; // Valor de la proporción áurea
+    $ancho-contenedor: calc($ancho-pantalla / $proporcion-aurea);
+    @return $ancho-contenedor;
+}

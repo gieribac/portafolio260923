@@ -9,6 +9,14 @@
  <RouterView/>
 
 </template>
-<style>
+<style lang="scss">
+   *{
+      background-color: $green1;
+
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+   }
 
 </style>
