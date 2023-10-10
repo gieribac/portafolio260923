@@ -20,10 +20,14 @@
         box-sizing: border-box;
     }    
     .container{
+        // width:  calcular-ancho-contenedor(100vh); 
         background-color: $colorC;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         flex-wrap: wrap;
-    }    
+    }  
+    .container-item{
+
+    }  
 </style>

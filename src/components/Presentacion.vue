@@ -46,7 +46,7 @@
         font-size: 30px;
     }
     .presentacion{
-        width: calcular-ancho-contenedor(100vw);
+        max-width: calcular-ancho-contenedor(100vw);
         margin: 0 auto;
         font-family: $domine;
         line-height: 1.618;
@@ -62,6 +62,8 @@
             border-top-left-radius: 40px;
             border-bottom-right-radius: 40px;
             text-align: center;
+            width: 100%;
+            min-width: 300px;
             padding:5%;
             background-color: white;
             
@@ -83,7 +85,7 @@
 
 
     
-    @media screen and (max-width: 300px) {
+    @media (max-width: 300px) {
         .presentacion__img {
             display: none;
         }

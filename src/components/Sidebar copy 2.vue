@@ -7,10 +7,20 @@
     const toggleClass = ():void => {
         isActive.value = !isActive.value;
         emit("toggle",isActive.value);
-        console.log("click")
   }
 
 
+  onMounted(()=> {
+    const nodo: object = document.querySelector('.router-link-active');
+    const father: object = nodo.parentNode;
+    const nodoid: string = nodo.id;
+    const num: number = parseInt(nodoid.charAt(nodoid.length - 1));
+    console.log(num)
+    const nodolivPre = document.querySelector(`#liv${num}`);
+    const nodolivPos = document.querySelector(`#liv${num+1}`);
+    nodolivPre.style['border-bottom-right-radius'] = '15px';
+    nodolivPos.style['border-top-right-radius'] = '15px';
+  })
 
 </script>
 <template>
@@ -22,27 +32,18 @@
       <ul>	
         <li class="li-logo" @click="toggleClass">
           <img src="/src/assets/logo.png" alt="Logo gio" class="logo">
-        </li>        
-          <div class="cont-li">
-            <RouterLink id="li1" class="li" :to="{name:'sobremi'}">
-              <p><span class="material-symbols-outlined">play_lesson</span>Sobre mi</p>
-            </RouterLink></div>        
-        <div class="cont-li">
-          <RouterLink id="li2" class="li" :to="{name:'misproy'}">
-            <p><span class="material-symbols-outlined">folder_open</span>Mis proyectos</p>
-          </RouterLink></div>        
-        <div class="cont-li">
-          <RouterLink id="li3" class="li" :to="{name:'hv'}">
-            <p><span class="material-symbols-outlined">badge</span>Hoja de vida</p>
-          </RouterLink></div>        
-        <div class="cont-li">
-          <RouterLink id="li4" class="li" :to="{name:'cert'}">
-            <p><span class="material-symbols-outlined">developer_guide</span>Certificados</p>
-          </RouterLink></div>        
-        <div class="cont-li">
-          <RouterLink id="li5" class="li" :to="{name:'landingpage'}">
-            <p><span class="material-symbols-outlined">home</span> Regresar</p>
-          </RouterLink></div>        
+        </li>
+        <div id="liv1" class="liv"></div>
+        <div class="cont-li"><RouterLink id="li1" class="li" :to="{name:'sobremi'}">Sobre mi</RouterLink></div>
+        <div id="liv2" class="liv"></div>
+        <div class="cont-li"><RouterLink id="li2" class="li" :to="{name:'misproy'}">Mis proyectos</RouterLink></div>
+        <div id="liv3" class="liv"></div>
+        <div class="cont-li"><RouterLink id="li3" class="li" :to="{name:'misproy'}">Hoja de vida</RouterLink></div>
+        <div id="liv4" class="liv"></div>
+        <div class="cont-li"><RouterLink id="li4" class="li" :to="{name:'misproy'}">Certificados</RouterLink></div>
+        <div id="liv5" class="liv"></div>
+        <div class="cont-li"><RouterLink id="li5" class="li" :to="{name:'landingpage'}">Regresar</RouterLink></div>
+        <div id="liv6" class="liv"></div>
       </ul>
     </div>
           
@@ -62,7 +63,7 @@
     position: fixed;
     width: 200px;
     height: 100%;
-    background-color: $colorC;
+    background-color: $colorD;
     left: -160px;
     transition: all 200ms linear;
     margin-top: 0px;
@@ -95,6 +96,7 @@
         display: absolute;
         left: 150px;
         top: 150px;
+        background-color: $colorD;
         margin-left: 0px;
         padding:8px;
         z-index:2;
@@ -121,8 +123,6 @@
     display:flex;
     flex-direction: column;
     height: 100%;
-    position: relative;
-    right: 30px;
   }
   #sidebar.active ul {
     padding-right: 0px;
@@ -135,9 +135,8 @@
   }
   .li-logo {
     padding: 8px 10px; 
-    position: relative;
+    background-color: $colorD;
     width: 100%;
-    left: 30px;
   }
   .logo {
     border-radius: 15px;
@@ -181,79 +180,55 @@
   .cont-li{
     height: 2em;
     display:flex;
-    width:200px;
-    justify-content:center;
-    align-items:center;
-    background-color: $colorC;
-    position:relative;
-    right: 15px;
-  }
-  .active .cont-li{
-    height: 2em;
-    display:flex;
-    width:200px;
+    width:230px;
     justify-content:center;
     align-items:center;
     background-color: $colorD;
     position:relative;
     right: 15px;
+   
   }
   .li {
-    width: 170px;
-    margin: 0px;
-    padding: 8px;
-    border-radius: 15px;
-    color: black;
-    text-decoration:none;  
-    height: 2em;
-    text-align:left;
-    position:relative;  
-    top: -13x;
-    right: -60px;
-    > p{
-      display: flex;
-      align-items: center;
-    }
+  width: 170px;
+  margin: 0px;
+  padding: 8px;
+  border-radius: 15px;
+  color: black;
+  text-decoration:none;  
+  height: 2em;
+  text-align:center;
+  position:relative;  
+  right: -30px;
     &:hover {
-        font-weight: bold;
-        color: $colorB;
+      font-weight: bold;
+      color: $colorB;
     }
   }
-  #sidebar .active > ul > .cont-li 
+  .liv{
+    width: 200px;
+    margin: 0px;
+    padding: 8px;
+    color: black;
+    text-decoration:none;  
+    background-color: $colorD;
+    height: 1em;
+  }
+  #liv6 {
+    height:100%;
+  }
   .router-link-active {
     font-weight: bold;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
     margin-left: 0px;
     background-color: $colorC;
-    transition: all 200ms linear;    
-    &::before {
-      content: "";
-      background-color: $colorD;
-      border-bottom-right-radius: 15px;
-      height: 100vh;
-      position:absolute; 
-      bottom:100%; 
-      z-index:-1;
-      width: 200px;
-      margin: 0px;
-      left:-30px;
-    }
-    &::after {
-      content: "";
-      background-color: $colorD;
-      border-top-right-radius: 15px;
-      height: 100vh;
-      position:absolute; 
-      top:100%; 
-      width: 200px;
-      margin: 0px;
-      left:-30px;
-    }
+
     &:hover {
       font-weight: bold;
       cursor: default;
       color: black;
     }
-  } 
+  }  
 }
 @media (max-width: $sm){ 
   .sidebar {
@@ -307,13 +282,7 @@
     padding:5px;
   }
   .sidebar ul {
-    transition: all 200ms linear;
     display: none;
-    > .cont-li >.li > p{
-      display: flex;
-      align-items: center;
-      height: 1.3em;
-    }
   }
   .sidebar.active ul{
     display:flex;
@@ -321,7 +290,6 @@
     align-items: center;
     justify-content: center;
     height: 140px;
-    transition: all 200ms linear;
   }
   
   .sidebar ul li {
@@ -340,7 +308,8 @@
     transition: all 200ms linear;
     position: relative;
     right: 80px;
-    top: 70px;  
+    top: 70px;
+    
   }
   .sidebar ul li.actual {
     font-weight: bold;
@@ -364,5 +333,7 @@
       color: black;
     }
   }
+    
+
 }
 </style>

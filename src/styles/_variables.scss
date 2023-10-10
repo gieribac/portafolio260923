@@ -16,7 +16,6 @@ $domine: 'Domine', serif;
 
 
 @function calcular-ancho-contenedor($ancho) {
-    $proporcion-aurea: $na; // Valor de la proporción áurea
-    $ancho-contenedor: calc($ancho / $proporcion-aurea);
-    @return $ancho;
+    $ancho-contenedor: calc($ancho / $na);
+    @return $ancho-contenedor;
 }

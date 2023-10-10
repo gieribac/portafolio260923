@@ -1,5 +1,13 @@
 <script setup lang="ts">
  import Sidebar from '../components/Sidebar.vue';
+ import {ref, Ref} from 'vue';
+ let isActive: Ref<boolean> = ref(false);
+    const active =(m:boolean):void => {
+        isActive.value = m;
+    }
+    const toggleClass = ():void => {
+            isActive.value = !isActive.value;
+        }
 </script>
 <template>
   <div  class="misproy">
