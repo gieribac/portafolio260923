@@ -1,7 +1,7 @@
 <script setup lang="ts">
  import Sidebar from '../components/Sidebar.vue';
- import {plusSlides} from '../cod/slider.ts';
- import {currentSlide} from '../cod/slider.ts'; 
+ import {plusSlides} from '../cod/slider';
+ import {currentSlide} from '../cod/slider'; 
  import {ref, Ref, onMounted} from 'vue';
  
   let isActive: Ref<boolean> = ref(false);
@@ -131,7 +131,7 @@
 
 				<div class="mySlides2">
 					<div class="numbertext">10 / 10</div>
-					<img src="/src/assets/certs/e_instalador.JPG" style="width:100%">
+					<img src="/src/assets/certs/e_instalador.jpg" style="width:100%">
 				</div>
 			  
 
