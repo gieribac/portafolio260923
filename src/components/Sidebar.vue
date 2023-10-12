@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { route, RouterLink } from 'vue-router';
+  import { RouterLink } from 'vue-router';
   import { ref, Ref, computed, onMounted, defineEmits} from 'vue';
 
   const emit = defineEmits(["toggle"]);
@@ -9,39 +9,36 @@
         emit("toggle",isActive.value);
         console.log("click")
   }
-
-
-
 </script>
 <template>
   <div :class="{'active': isActive}" class="sidebar">
     <div :class="{'active': isActive}" id="sidebar">
       <div @click="toggleClass" :class="{'active': isActive}" class="toggle-btn">
-        <span>&#9776</span><div id="a"><RouterLink  :to="{name:'landingpage'}">Regresar</RouterLink></div> 
+        <span>&#9776</span><div id="a"><RouterLink  :to="{name:'landingpage'}"><p><span class="material-symbols-outlined">home</span>Regresar</p></RouterLink></div> 
       </div>
       <ul>	
         <li class="li-logo" @click="toggleClass">
           <img src="/src/assets/logo.png" alt="Logo gio" class="logo">
         </li>        
           <div class="cont-li">
-            <RouterLink id="li1" class="li" :to="{name:'sobremi'}">
-              <p><span class="material-symbols-outlined">play_lesson</span>Sobre mi</p>
+            <RouterLink class="li" :to="{name:'presentacion'}">
+              <p><span class="material-symbols-outlined">play_lesson</span>Presentación</p>
             </RouterLink></div>        
         <div class="cont-li">
-          <RouterLink id="li2" class="li" :to="{name:'misproy'}">
+          <RouterLink class="li" :to="{name:'sobremi'}">
+            <p><span data-v-7d622f5c="" class="material-symbols-outlined">badge</span>Sobre mi</p>
+          </RouterLink></div>        
+        <div class="cont-li">
+          <RouterLink class="li" :to="{name:'misproy'}">
             <p><span class="material-symbols-outlined">folder_open</span>Mis proyectos</p>
           </RouterLink></div>        
         <div class="cont-li">
-          <RouterLink id="li3" class="li" :to="{name:'hv'}">
-            <p><span class="material-symbols-outlined">badge</span>Hoja de vida</p>
-          </RouterLink></div>        
-        <div class="cont-li">
-          <RouterLink id="li4" class="li" :to="{name:'cert'}">
+          <RouterLink class="li" :to="{name:'cert'}">
             <p><span class="material-symbols-outlined">developer_guide</span>Certificados</p>
           </RouterLink></div>        
         <div class="cont-li">
-          <RouterLink id="li5" class="li" :to="{name:'landingpage'}">
-            <p><span class="material-symbols-outlined">home</span> Regresar</p>
+          <RouterLink class="li" :to="{name:'landingpage'}">
+            <p><span class="material-symbols-outlined">home</span>Regresar</p>
           </RouterLink></div>        
       </ul>
     </div>
@@ -55,9 +52,21 @@
 }
 #sidebar {
   z-index:2;
+  
+}
+p{
+  display: flex;
+  align-items: center;
+      
+}
+#sidebar.active .toggle-btn span {
+transform: rotate(90deg);
+color: black;
+&:hover {
+      color: black;
+    }
 }
 @media (min-width: $sm){
-
   #sidebar {
     position: fixed;
     width: 200px;
@@ -67,7 +76,7 @@
     transition: all 200ms linear;
     margin-top: 0px;
     display: inline;
-    font-family: Century Gothic,'Roboto', sans-serif;
+    font-family: $domine;
     .toggle-btn {
       position: absolute;
       left: 160px;
@@ -123,15 +132,15 @@
     height: 100%;
     position: relative;
     right: 30px;
+    display:none;
   }
   #sidebar.active ul {
     padding-right: 0px;
     transition: all 200ms linear;
+    display:inline-block;
   }
   #sidebar ul li {    
-    list-style: none;   
-    text-align: left;  
-      
+    text-align: left;        
   }
   .li-logo {
     padding: 8px 10px; 
@@ -149,6 +158,9 @@
     border-color: $colorE;
     background-color: $colorE;
   }
+  #a {
+    width: 100%;
+  }
   .active > #a {
     display: none;
   }
@@ -160,13 +172,6 @@
     width: 40px;
     margin: 0px;
     padding: 0px; 
-  }
-  #sidebar.active .toggle-btn span {
-  transform: rotate(90deg);
-  color: black;
-  &:hover {
-        color: black;
-      }
   }
   #sidebar .toggle-btn span {
     display: block;
@@ -210,15 +215,13 @@
     position:relative;  
     top: -13x;
     right: -60px;
-    > p{
-      display: flex;
-      align-items: center;
-    }
+    
     &:hover {
         font-weight: bold;
         color: $colorB;
     }
   }
+  
   #sidebar .active > ul > .cont-li 
   .router-link-active {
     font-weight: bold;
@@ -285,8 +288,7 @@
         color: $colorB
       }
     }
-  }
-  
+  }  
   .sidebar .toggle-btn span {
     display: inline-block;
     width: 50px;
@@ -301,10 +303,17 @@
     border: solid;
     border-color: $colorD;
   }
-  .sidebar.active .toggle-btn span {
-    transform-origin: center;
-    transform: rotate(90deg);
-    padding:5px;
+
+  .sidebar .toggle-btn > span {
+    position: relative;
+    bottom: 5px;
+  }
+  .sidebar .toggle-btn.active > span {
+    position: relative;
+    bottom: -2px;
+  }
+  .sidebar.active .toggle-btn  p {
+    display:none;
   }
   .sidebar ul {
     transition: all 200ms linear;
@@ -322,12 +331,12 @@
     justify-content: center;
     height: 140px;
     transition: all 200ms linear;
-  }
-  
+  }  
   .sidebar ul li {
     list-style: none;
     padding: 0;
   }
+  
   .logo {    
     border-radius: 6px;
     display: block;

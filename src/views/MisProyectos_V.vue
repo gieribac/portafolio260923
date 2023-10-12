@@ -13,39 +13,181 @@
   <div  class="misproy">
    
    <Sidebar @toggle="active" id="sidebar"/>  
-   <div class="content" :class="{'active': isActive}">
+   <div class="principal contenido" :class="{'active': isActive}">
+      <h1>Mis Proyectos</h1>
+      <a class="principal_sub" href="https://github.com/gieribac" target="_blank">
+        <br> Repositorio de Proyectos GitHub
+        </a>
+      <p>Esta sección muestra brevemente algunos proyectos y ejercicios de programación y desarrollo sobre los que he trabajado.
+      </p>
+      
+      <p>Invito a visitar mi repositorio de github donde estos se incluyen, representando mi experiencia en el tema.
+        
+      </p>
+      <div class="exproy"> 
+        <h2>Sitio Web Veterinaria</h2>
+        <div class="imagen">
+        <img src="/src/assets/misproy/DPFronted_.jpg" alt="imagen">
+        <br>
+        <img src="/src/assets/misproy/DPFronted.jpg" alt="imagen">
+        <br>
+        <img src="/src/assets/misproy/DPB.jpg" alt="imagen">
+        </div>
+        <p>Aplicación web SPA para una veterinaria, incluye fronted en angular, api en spring boot y base de datos mongoDB</p>
+        <a href="https://github.com/gieribac/crud_springboot.git" target="_blank">
+        API REST
+        </a><br>
+        <a href="https://github.com/gieribac/proyect_angular_veterinaria.git" target="_blank">
+          Fronted
+          </a>
+         
+      </div>
+      <div class="exproy"> 
+        <h2>Pagina web Segunda Vuelta</h2>
+        <div class="imagen">
+        <img src="/src/assets/misproy/sevu.jpg" alt="imagen">
+        </div>
+        <p>Pagina web Html-Css 
+        <a href="https://github.com/gieribac/Segunda_Vueltav1.git" target="_blank">
+        <br> Repositorio Pagina Web
+        </a>
+        </p> 
+      </div>
+      <div class="exproy"> 
+        <h2>Memofichas</h2>
+        <div class="imagen">
+        <img src="/src/assets/misproy/py1.jpg" alt="imagen">
+        </div>
+        <p>Aplicación web sencilla para configuración de 5 memofichas, basada en Html, Css y JavaScript.
+        <a href="https://github.com/gieribac/memofichas/tree/master" target="_blank">
+        <br> Repositorio Memofichas
+        </a>
+        </p> 
+      </div>
+      <div class="exproy"> 
+        <h2>Biblioteca_Libros</h2>
+        <div class="imagen">
+        <img src="/src/assets/misproy/pjs1.jpg" alt="imagen">
+        </div>
+        <p>Practica de Js utilizando programación funcional y expresiones regulares
+        <a href="https://github.com/gieribac/biblioteca01.git" target="_blank">
+        <br> Practica JavaScript
+        </a>
+        </p> 
+      </div>
+      <div class="exproy"> 
+        <h2>Practicas de Interfaz Grafica de Java</h2>
+        <div class="imagen">
+        <img src="/src/assets/misproy/calc_java.jpg" alt="imagen">
+        <br>
+        <img src="/src/assets/misproy/cStr.jpg" alt="imagen">
+        </div>
+        <p>En primer lugar se muestra una calculadora y en segundo lugar una utilidad que sirve para convertir strings en un formato personalizado, util para los titulos de las normas apa.
+        <a href="https://github.com/gieribac/practicas_IntG_Java.git" target="_blank">
+        <br> Practicas Interfaz Grafica Java
+        </a>
+        </p> 
+      </div>
+      <div class="exproy"> 
+        <h2>Practica de Python</h2>
+        <div class="imagen">
+        <img src="/src/assets/misproy/pPhy.jpg" alt="imagen">
+        </div>
+        <p>Practica algoritmica con phyton donde se pide optimización
+        <a href="https://github.com/gieribac/Ejercicio_B_Phyton.git" target="_blank">
+        <br> Practica Phyton
+        </a>
+        </p> 
+      </div>
+    </div>
   </div>
-  </div>
+
 </template>
 <style scoped lang="scss">
-
-a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: $colorC;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
+.misproy {
+    width: 100%;
+    overflow-x: hidden;
 }
-.content {  
+.contenido {  
     position: relative;
-    padding:0;
-    margin:0;
     background-color: $colorC;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
     align-items: center;
+    transition: all 250ms linear;
+    max-height: 100%;
+    z-index: 1;
     left: 40px;
     padding-right: 40px;
-    transition: all 250ms linear;
-    height: 100vh;
-    z-index: 1;
+    text-align: center;
     &.active {
-        left: 200px;
-        padding-right: 200px;
+      left: 200px;
+      padding-right: 200px;
     }
 }
 
+.principal img {  
+    border: $colorD 2px solid;
+    max-width: 90%;
+}
+
+.principal h1{
+    text-align:center;
+    padding: 0.4em 7%;
+    color: black;
+    text-shadow: 2px 2px 4px $colorE;
+}
+
+.principal_sub {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    display:block;
+    text-align: center;
+}
+
+.principal h2{
+    text-align:center;
+    padding: 0.3em 2%;
+}
+
+.principal p{
+  padding: 0.3em  5%;
+}
+
+.principal a {
+  padding: 0.3em  5%;
+  color: $colorB;
+  font-weight: bold;
+  &:hover {
+    color: $colorD;
+  }
+}
+
+.principal .exproy{
+  position: relative;
+  top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  text-align: center;
+  padding: 5%;
+}
+
+@media (max-width: $sm) {//576px;
+  img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  .contenido {
+    left: 0;
+    padding-right: 0;
+    &.active {
+    left: 0;
+    padding-right: 0;
+    }
+  }
+}
 </style>

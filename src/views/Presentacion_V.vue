@@ -10,34 +10,26 @@
         }
 </script>
 <template>
-    <div  class="sobremi">
+    <div  class="presentacion">
         <Sidebar @toggle="active" id="sidebar"/>    
         <div class="content" :class="{'active': isActive}">
             <div>			
-                <h1>Sobre mi</h1>
-                <p class="invitation">Reproduce el video para contarte algo más de mi</p>                             
+                <h1>Presentación</h1>
+                <p class="invitation">Reproduce el video para presentarme</p>                             
                     <iframe :class="{'active': isActive}" src="https://www.youtube.com/watch?v=Yx26Q8eNeWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                     </iframe>
                     <p class="alt_">Cargando video</p>      
             </div>
-        </div>
-        <div class="content" :class="{'active': isActive}">
-            <div>			
-                <h1>Sobre mi</h1>
-                <p class="invitation">Reproduce el video para contarte algo más de mi</p>                             
-                    <iframe :class="{'active': isActive}" src="https://www.youtube.com/watch?v=Yx26Q8eNeWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                    </iframe>
-                    <p class="alt_">Cargando video</p>      
-            </div>
-            
         </div>
     </div>
 </template>
 <style lang="scss" scoped>
-
+.presentacion {
+    width: 100%;
+    overflow-x: hidden;
+}
 .content {
     position: relative;
-    padding:0;
     margin:0;
     background-color: $colorC;
     display: grid;
@@ -51,6 +43,12 @@
     height: 100vh;
     z-index: 1;
     transition: all 200ms linear;
+    > div {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+    }
     &.active {
         left: 200px;
         padding-right: 200px;
@@ -62,8 +60,9 @@
             
         }
         h1 {
-                color: $colorE;
-            }
+            color: black;
+            text-shadow: 2px 2px 4px $colorE;
+        }
     }
 }
 
@@ -78,7 +77,7 @@
         }
     }
 }
-@media (max-width: $xl) and (min-width: $lg) {//1200
+@media (max-width: $xl) and (min-width: $lg) {//1200 - $lg: 992px;
     iframe {
         width: calc(($xl - 40px)/$na);
         height: calc((($xl - 40px)/$na)/1.77);
@@ -89,7 +88,7 @@
         }   
     }
 }
-@media (max-width: $lg) and (min-width: $md) {
+@media (max-width: $lg) and (min-width: $md) {//$md: 768px;
   iframe {
         width: calc(($lg - 40px)/$na);
         height: calc(($lg - 40px)/$na/1.77);

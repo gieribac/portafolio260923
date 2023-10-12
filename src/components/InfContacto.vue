@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 <template>
     <div class="container">
         <div class="container__item container__intro1" >
-            <RouterLink class="container__intro" :to="{name:'sobremi',  params: {id:1}}">Ingresar <span class="material-symbols-outlined">login</span></RouterLink>
+            <RouterLink class="container__intro" :to="{name:'presentacion'}">Ingresar <span class="material-symbols-outlined">login</span></RouterLink>
         </div>
         <div class="container__infcontacto container__item">
             <h2>Información de Contacto</h2>
