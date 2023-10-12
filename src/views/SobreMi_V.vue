@@ -50,9 +50,10 @@
 
            <a href="https://gieribac.github.io/portafolio_hv/index.html">Enlace de repositios GitHub</a>
 
-          <p>Este portafolio web constituye en si mismo una practiva del framework Vue.js versión 3 con typescript y scss, a continuación el  repositorio de codigo fuente puede ser consultado
+          <p>Este portafolio web constituye en si mismo una SPA construida con el framework Vue.js versión 3 con typescript y scss, a continuación el  repositorio de codigo fuente puede ser consultado
 
           </p>
+          <a href="https://github.com/gieribac/portafolio260923.git"> Codigo vue de este repositorio</a>
 
     
   </div>
@@ -74,7 +75,6 @@
     padding:0;
     margin:0;
     background-color: $colorC;
-
     left: 40px;
     padding-right: 40px;
     transition: all 250ms linear;
@@ -108,6 +108,9 @@
       text-decoration: none;
       &:hover {
         color: $colorD;
+      }
+      &:last-child {
+        padding-bottom: 1em;
       }
     }
     ul {

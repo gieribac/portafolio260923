@@ -43,6 +43,7 @@
     height: 100vh;
     z-index: 1;
     transition: all 200ms linear;
+    
     > div {
         display: flex;
         flex-direction: column;
