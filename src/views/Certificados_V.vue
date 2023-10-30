@@ -18,8 +18,7 @@
 
 </script>
 <template>
-  <div  class="certs">
-   
+  <div  class="certs">   
    <Sidebar @toggle="active" id="sidebar"/>  
    <div class="principal contenido" :class="{'active': isActive}">
 			 <nav class="nbar">
@@ -28,9 +27,9 @@
 					<li><a href="#otros">Otros</a></li>
 				</ul>
 			</nav>
-			<h1 class="title_">Certificados</h1>
+			<h1 id="pyd" class="title_">Certificados</h1>
 
-			<p id="pyd">Programación y Desarrollo</p><br>
+			<p >Programación y Desarrollo</p><br>
 			<div class="slideshow-container">
 			  <div class="mySlides1">
 				<div class="numbertext">1 / 7</div>
@@ -155,199 +154,191 @@
   </div>
 </template>
 <style scoped lang="scss">
-.certs{
-  background-color: $colorC;
-  width: 100%;
-  overflow-x: hidden;
-}
-.contenido {  
-    position: relative;
-    
+  .certs {
+    background-color: $colorC;
+    width: 100%;
+    overflow-x: hidden;
+  }
 
+  .contenido {
+    position: relative;
     transition: all 250ms linear;
     max-height: 100%;
     z-index: 1;
-    left: 40px;
     padding-right: 40px;
     text-align: center;
     &.active {
-      left: 200px;
       padding-right: 200px;
     }
-}
+  }
 
-a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: $colorB;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-}
-.principal {
-  
-  text-align: center;
-  box-sizing:border-box;
-  width: 100%;
-  height: auto;
-  color: black;
-  font-family: $domine;
-  padding: 3% 3%;
-  .nbar li a {
-    background-color: $colorA;
+  a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: $colorB;
     color: white;
-    font-weight: bold;
-    border-radius: 15px;
-    margin: 2px;
-    &:hover{
-      background-color: $colorD;
-      color: black;
-    }
+    text-decoration: none;
+    border-radius: 5px;
   }
-}
 
-
-.title_ {
-    color:#2c698d;
-    padding: 1em 0 0 0;
-}
-.principal {box-sizing: border-box}
-.principal body {font-family:$domine; margin:0}
-.principal .mySlides1 , .principal .mySlides2 {
-    display: none;
-    max-height: 1100px;
-    overflow: auto;
-    border: 2px solid #272643; 
-    border-radius: 15px;        
-    scrollbar-color:#272643 #2c698d;
-    scrollbar-width: 5px;
-}
-
-.principal img {vertical-align: middle;}
-.principal li {
-  list-style-type: none;
-}
-
-/* Slideshow container */
-.principal .slideshow-container {
-  max-width: 90%;
-  position: relative;
-  margin: auto; 
-}
-
-/* Next & previous buttons */
-.principal .prev, .principal .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 10px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 15px 15px 0;
-  user-select: none;
-  background-color: $colorD;
-  opacity: 0.5;
-}
-
-.principal h1{
-    text-align:center;
-    padding: 0.4em 7%;
+  .principal {
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
     color: black;
-    text-shadow: 2px 2px 4px $colorE;
-}
+    font-family: $domine;
+    padding: 3% 3%;
 
-/* Position the buttons*/
-.principal .next {
-  right: 20px;
-  border-radius: 3px 0 0 3px;
-}
-.principal .prev {
-    left: 3px;
-    border-radius: 3px 0 0 3px;
-  }
+    .nbar {
+      li a {
+      background-color: $colorA;
+      color: white;
+      font-weight: bold;
+      border-radius: 15px;
+      margin: 2px;
 
-/* On hover, add a black background color with a little bit see-through */
-.principal .prev:hover, .principal .next:hover {
-  background-color: #2c698d;
-}
+      &:hover {
+        background-color: $colorD;
+        color: black;
+      }
+    }
 
-/* Caption text */
-.principal .text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
+    }
 
-/* Number text (1/3 etc) */
-.principal .numbertext {
-  color: #2c698d;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
+    h1 {
+      text-align: center;
+      padding: 0.4em 7%;
+      color: black;
+      text-shadow: 2px 2px 4px $colorE;
+    }
 
-/* The dots/bullets/indicators */
-.principal .dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #717171;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
+    .mySlides {
+      display: none;
+      max-height: 1100px;
+      overflow: auto;
+      border: 2px solid #272643;
+      border-radius: 15px;
+      scrollbar-color: #272643 #2c698d;
+      scrollbar-width: 5px;
+    }
 
-.principal .active, .principal .dot:hover {
-  background-color: #272643;
-}
+    img {
+      vertical-align: middle;
+    }
 
-/* Fading animation */
-.principal .fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
+    li {
+      list-style-type: none;
+    }
 
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
+    .slideshow-container {
+      max-width: 90%;
+      position: relative;
+      margin: auto;
+    }
 
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 10px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 15px 15px 0;
+      user-select: none;
+      background-color: $colorD;
+      opacity: 0.5;
 
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
+      &:hover {
+        background-color: #2c698d;
+      }
+    }
 
-@media (max-width: $sm) {//576px;
-  img {
-    max-width: 90%;
-    max-height: 90%;
-  }
-  .contenido {
-    left: 0;
-    padding-right: 0;
-    &.active {
-    left: 0;
-    padding-right: 0;
+    .prev {
+      left: 3px;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .next {
+      right: 3px;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .text {
+      color: #f2f2f2;
+      font-size: 15px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .numbertext {
+      color: #2c698d;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #717171;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active,
+    .dot:hover {
+      background-color: #272643;
+    }
+
+    @media only screen and (max-width: 300px) {
+      .prev,
+      .next,
+      .text {
+        font-size: 11px;
+      }
     }
   }
-}
+  @media (min-width: $sm){
+      .contenido {
+        left: 0px;
+        &.active {
+          transition: all 200ms linear;
+          left: 180px;
+        }
+      }
+    }
 
+    @media (max-width: $sm) {
+      img {
+        max-width: 90%;
+        max-height: 90%;
+      }
+      .numbertext {
+      left: 15px;
+      }
 
+      .contenido {
+        right: 10px;
+        padding-right: 0;
+
+        &.active {
+          transition: all 200ms linear;
+          right: 10px;
+          padding-right: 0;
+        }
+      }
+    }
 </style>

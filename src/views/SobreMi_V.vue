@@ -37,7 +37,7 @@
             <li>SCRUM</li>
           </ul>
           <p>En la sección "mis proyectos" del presente portafolio se pueden encontrar algunos de mis trabajos más destacados. Sin embargo, también cuento con algunas prácticas en el área del manejo de datos y DevOps en la plataforma de Google Cloud SkillsBoost, las cuales pueden verificarse a continuación: 
-          </p><a href="https://www.cloudskillsboost.google/public_profiles/a122512e-803a-4141-9549-be3b8f5e43be">ver insignias de google</a>
+          </p><a href="https://www.cloudskillsboost.google/public_profiles/a122512e-803a-4141-9549-be3b8f5e43be">Ver insignias de google</a>
           <p>
             Mencionando mi experiencia laboral, el último proyecto remunerado en el cual he colaborado se trata de un aplicativo web SPA CRM para el seguimiento de productos y clientes para el grupo Vtek. En él, se utilizó principalmente desarrollo en HTML, CSS, JavaScript con uso de backend y base de datos Firestore, asumiendo el rol de programador backend y arquitecto en la interacción con el backend y las animaciones del frontend
           </p>
@@ -87,7 +87,6 @@
             text-shadow: 2px 2px 4px $colorE;
             padding: 1em 0;
             text-align: center;
-            
         }
     h2 {
             color: $colorB;
@@ -165,14 +164,21 @@
 @media (max-width: $sm) {//576px;
     
     .content{
-        width: calc(($sm - 100px)/$na);
+        width: 85%;
         left: 0;
         padding-right: 0;
+        h1 {
+          margin-top: 50px;
+        }
         &.active {
         left: 0;
-        padding-right: 0;
-        width: calc(($sm - 300px));
+        padding-right: 0;  
+          h1 {
+            margin-top: 200px;
+          }     
         }
     }
+
+
 }
 </style>

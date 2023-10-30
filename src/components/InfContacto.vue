@@ -86,6 +86,12 @@ import { RouterLink } from 'vue-router'
     margin: 0.618em auto;
     border-radius: 40px;
     line-height: 1.618;
+    h2 {
+        font-size: 22px;
+    }
+    .container__tables {
+        font-size: 15px;
+    }
     .clave{
         text-align: right;
         font-weight: bold;
@@ -110,7 +116,7 @@ import { RouterLink } from 'vue-router'
 }
 .container__intro{
     width: 5%;
-    font-size: 20px;
+    font-size: 18px;
     background-color: $colorD;
     color: black;
     font-weight: bold;

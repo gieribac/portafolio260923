@@ -31,23 +31,23 @@
         
     }
     h2{
-        font-size: 26px;
+        font-size: 24px;
     }
     .title{
         text-align: center;
         color: black;
         width: 100%;
         margin: 0;
-        padding: 0.618em 0;
+        padding: 0.5em 0;
         font-family: $domine;
-        border-top: 0.618em solid $colorD;
-        border-bottom: 0.618em solid $colorD;
+        border-top: 0.5em solid $colorD;
+        border-bottom: 0.5em solid $colorD;
         background: $colorE;
-        font-size: 30px;
+        font-size: 27px;
     }
     .presentacion{
         max-width: calcular-ancho-contenedor(100vw);
-        margin: 0 auto;
+        margin: 15px auto 0 auto;
         font-family: $domine;
         line-height: 1.618;
         color: black;
@@ -76,7 +76,7 @@
         flex-grow: 1;
     }
     .presentacion__img {
-        width: 100%;
+        width: 90%;
         min-width: 300px;
         border-radius: 40px;
         margin: 0;

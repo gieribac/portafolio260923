@@ -66,7 +66,7 @@ color: black;
       color: black;
     }
 }
-@media (min-width: $sm){
+@media (min-width: $sm) {
   #sidebar {
     position: fixed;
     width: 200px;
@@ -74,193 +74,198 @@ color: black;
     background-color: $colorC;
     left: -160px;
     transition: all 200ms linear;
-    margin-top: 0px;
+    margin-top: 0;
     display: inline;
     font-family: $domine;
-    .toggle-btn {
-      position: absolute;
-      left: 160px;
-      top: 0px;
-      text-align: center;
-      height: 40px;
-      margin: 0px;
-      padding: 0px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      background-color: $colorD;
-      border-top-right-radius: 15px;
-      border-bottom-right-radius: 15px;
-      span {
-        display: block;
-        width: 40px;
-        font-size: 30px;
-        margin: 0px;
-        padding: 0px;
-        cursor: pointer;
-        transition: all 500ms linear;
-      }      
-      a {
-        display: absolute;
-        left: 150px;
-        top: 150px;
-        margin-left: 0px;
-        padding:8px;
-        z-index:2;
-        border-top-right-radius: 15px;
-        border-bottom-right-radius: 15px;
-        text-decoration: none;
-        color: black;
-        width: 90px;
-        transition: all 200ms linear;
-        &:hover {
-          font-weight: bold;
-          color: $colorB;
-        }
-      }
-    }
   }
+
   #sidebar.active {
-    left: 0px;
+    left: 0;
     width: 200px;
     background-color: $colorC;
+    transition: all 200ms linear;
+    .toggle-btn {
+      right: 30px;
+    }
   }
+
+  #sidebar .toggle-btn {
+    position: absolute;
+    left: 160px;
+    top: 0;
+    text-align: center;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $colorD;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 0 10px;
+  }
+
+  #sidebar .toggle-btn span {
+    display: block;
+    width: 40px;
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: all 500ms linear;
+  }
+
+  #sidebar .toggle-btn a {
+    display: relative;
+    left: 160px;
+    top: 150px;
+    margin-left: 0;
+    text-align: right;
+    padding: 8px;
+    z-index: 2;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-decoration: none;
+    color: black;
+    width: 90px;
+    transition: all 200ms linear;
+  }
+
+  #sidebar .toggle-btn a:hover {
+    font-weight: bold;
+    color: $colorB;
+  }
+
   #sidebar ul {
-    align-items:center;
-    display:flex;
+    align-items: center;
+    display: flex;
     flex-direction: column;
     height: 100%;
     position: relative;
     right: 30px;
-    display:none;
+    display: none;
   }
+
   #sidebar.active ul {
-    padding-right: 0px;
+    padding-right: 0;
     transition: all 200ms linear;
-    display:inline-block;
+    display: inline-block;
   }
-  #sidebar ul li {    
-    text-align: left;        
+
+  #sidebar ul li {
+    text-align: left;
   }
+
   .li-logo {
-    padding: 8px 10px; 
+    padding: 8px 10px;
     position: relative;
     width: 100%;
     left: 30px;
   }
+
   .logo {
     border-radius: 15px;
     display: block;
-    margin: 25px auto; 
+    margin: 25px auto;
     width: 100px;
     height: 110px;
     border-style: solid;
     border-color: $colorE;
     background-color: $colorE;
   }
+
   #a {
     width: 100%;
   }
+
   .active > #a {
     display: none;
   }
+
   #sidebar .toggle-btn .active {
     position: absolute;
     left: 160px;
-    top: 0px;
+    top: 0;
     cursor: pointer;
     width: 40px;
-    margin: 0px;
-    padding: 0px; 
+    margin: 0;
+    padding: 0;
   }
-  #sidebar .toggle-btn span {
-    display: block;
-    width: 40px;
-    font-size: 30px;
 
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-    transition: all 500ms linear;
-  } 
-  .cont-li{
+  .cont-li {
     height: 2em;
-    display:flex;
-    width:200px;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
     background-color: $colorC;
-    position:relative;
+    position: relative;
     right: 15px;
   }
-  .active .cont-li{
+
+  .active .cont-li {
     height: 2em;
-    display:flex;
-    width:200px;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
     background-color: $colorD;
-    position:relative;
+    position: relative;
     right: 15px;
   }
+
   .li {
     width: 170px;
-    margin: 0px;
+    margin: 0;
     padding: 8px;
     border-radius: 15px;
     color: black;
-    text-decoration:none;  
+    text-decoration: none;
     height: 2em;
-    text-align:left;
-    position:relative;  
+    text-align: left;
+    position: relative;
     top: -13x;
     right: -60px;
-    
-    &:hover {
-        font-weight: bold;
-        color: $colorB;
-    }
   }
-  
-  #sidebar .active > ul > .cont-li 
-  .router-link-active {
+
+  .li:hover {
     font-weight: bold;
-    margin-left: 0px;
+    color: $colorB;
+  }
+
+  #sidebar .active > ul > .cont-li .router-link-active {
+    font-weight: bold;
+    margin-left: 0;
     background-color: $colorC;
-    transition: all 200ms linear;    
-    &::before {
-      content: "";
-      background-color: $colorD;
-      border-bottom-right-radius: 15px;
-      height: 100vh;
-      position:absolute; 
-      bottom:100%; 
-      z-index:-1;
-      width: 200px;
-      margin: 0px;
-      left:-30px;
-    }
-    &::after {
-      content: "";
-      background-color: $colorD;
-      border-top-right-radius: 15px;
-      height: 100vh;
-      position:absolute; 
-      top:100%; 
-      width: 200px;
-      margin: 0px;
-      left:-30px;
-    }
-    &:hover {
-      font-weight: bold;
-      cursor: default;
-      color: black;
-    }
-  } 
+    transition: all 200ms linear;
+  }
+
+  #sidebar .active > ul > .cont-li .router-link-active::before,
+  #sidebar .active > ul > .cont-li .router-link-active::after {
+    content: "";
+    background-color: $colorD;
+    height: 100vh;
+    position: absolute;
+    width: 200px;
+    margin: 0;
+    left: -30px;
+  }
+
+  #sidebar .active > ul > .cont-li .router-link-active::before {
+    border-bottom-right-radius: 15px;
+    bottom: 100%;
+    z-index: -1;
+  }
+
+  #sidebar .active > ul > .cont-li .router-link-active::after {
+    border-top-right-radius: 15px;
+    top: 100%;
+  }
 }
 @media (max-width: $sm){ 
   .sidebar {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -279,6 +284,7 @@ color: black;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
     a {
       text-decoration: none;
       color: black;
@@ -341,8 +347,8 @@ color: black;
     border-radius: 6px;
     display: block;
     margin-bottom: 1em;
-    width: 110px;
-    height: 132px;
+    width: 120px;
+    height: 145px;
     border-style: solid;
     border-color: $colorD;
     background-color: $colorD;
@@ -373,5 +379,13 @@ color: black;
       color: black;
     }
   }
+  .cont-li{
+    position: relative;
+    bottom: 15%;
+    right: -22%;
+    transform: translate(-50%)
+
+  }
 }
+
 </style>

@@ -10,6 +10,7 @@
         }
 </script>
 <template>
+  
   <div  class="misproy">
    
    <Sidebar @toggle="active" id="sidebar"/>  
@@ -24,6 +25,38 @@
       <p>Invito a visitar mi repositorio de github donde estos se incluyen, representando mi experiencia en el tema.
         
       </p>
+      <div class="exproy"> 
+        <h2>Aplicativo web CMR</h2>
+        <p>A continuaciñon se incluyen la vista de la landing page y algunos de los sitios del perfil de administrador, dorector técnico y técnico coordinador</p>
+        <div class="imagen">
+        <img src="/src/assets/misproy/vtek/Administrador_CRM-40.jpg" alt="imagen">
+        <br>
+        <img src="/src/assets/misproy/vtek/Administrador_CRM-41.jpg" alt="imagen">
+        <br>
+        <img src="/src/assets/misproy/vtek/Administrador_CRM-44.jpg" alt="imagen">
+        <br>
+        <img src="/src/assets/misproy/vtek/director_tecnico_CRM-26.jpg" alt="imagen">
+        <br>
+        <img src="/src/assets/misproy/vtek/Tecnico_coordinador_CRM-17.jpg" alt="imagen">
+        </div>
+        <p>Este sitio web es una SPA con opciones como creación de diferentes usuarios con diferentes roles, adminsitración de información de clientes y generación reportes en PDF. Tecnologias utilizadas: Javascript en el fronted, backend Firestore</p>
+        <a href="https://github.com/gieribac/proyecto_vtek.git" target="_blank">
+        Repositorio proyecto CMR Vtek
+        </a><br>
+      </div>
+        <div class="exproy"> 
+        <h2>Landing page videos de publicidad</h2>
+        <p>ALamding page realizada para exponer videos cortos publicitarios, para acceder hay que conocer el numero del telefono del candidato</p>
+        <div class="imagen">
+        <img src="/src/assets/misproy/lagencambio.jpg" alt="imagen">
+        <br>
+        </div>
+        <p>Landing page publicitaria simple con fuentes personalizadas Tecnologias utilizadas: Javascript en el fronted, backend Firestore</p>
+        <a href="https://github.com/gieribac/landingpage_laGenDelCambio.git" target="_blank">
+        Repositorio landing page
+        </a><br>
+         
+      </div>
       <div class="exproy"> 
         <h2>Sitio Web Veterinaria</h2>
         <div class="imagen">
