@@ -1,30 +1,31 @@
-<script setup>
-    import { ref, computed, onMounted} from 'vue';
-    const f = false;
-    const t = true;
-    let pause = ref(f);
-    let gameOver_ = ref(t);
-    let gameOverAlert = ref('');    
-    let score = ref(0);
-    let lvl = ref(0);
+//revisar porque no compila como ts
+<script setup lang="ts">
+    import { ref, Ref, computed, onMounted} from 'vue';
+    const f: boolean = false;
+    const t: boolean = true;
+    let pause: Ref<boolean> = ref(f);
+    let gameOver_: Ref<boolean> = ref(t);
+    let gameOverAlert: Ref<string> = ref('');    
+    let score: Ref<number> = ref(0);
+    let lvl: Ref<number> = ref(0);
 
 onMounted(()=>{
     //1. configuracion inicial
     const canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
-    const block_size = 20;
-    const board_width = 14;
-    const board_height = 24;
+    const block_size: number = 20;
+    const board_width: number = 14;
+    const board_height: number = 24;
 
     canvas.width = block_size*board_width;
     canvas.height = block_size*board_height;
     context.scale(block_size, block_size);
 
     //2. game loop
-    let dropCounter = 0;
-    let lastTime = 0;
+    let dropCounter: number = 0;
+    let lastTime: number = 0;
     
-    const update = (time = 0) =>  {
+    const update = (time: number = 0):void =>  {
         const deltaTime = time - lastTime;
         lastTime = time;
         dropCounter += deltaTime;
@@ -42,11 +43,11 @@ onMounted(()=>{
     
     
     //3. board
-    const board = new Array(board_height).fill(f).map(() => new Array(board_width).fill(f));
+    const board: boolean[][] = new Array(board_height).fill(f).map(() => new Array(board_width).fill(f));
 
     // 4. piece player
-    let n = Math.floor(board_width / 2 - Math.floor(Math.random() * 3))
-    const pieces= [
+    let n: number = Math.floor(board_width / 2 - Math.floor(Math.random() * 3))
+    const pieces: object = [
         [
             [t,t],
             [t,t]
@@ -75,13 +76,13 @@ onMounted(()=>{
             [t, t, t]
         ]
     ]
-    const shape= pieces[Math.floor(Math.random() * pieces.length)];
-    const piece= {
+    const shape = pieces[Math.floor(Math.random() * pieces.length)];
+    const piece: objec = {
         position: {x:n,y:0},
         shape: shape
     }
 
-    const draw = () => {
+    const draw = ():void => {
         context.fillStyle = '#4d674c';
         context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -102,8 +103,8 @@ onMounted(()=>{
 
         piece.shape.forEach((row,y) => {
             row.forEach((value,x) => {
-                const newx = x+piece.position.x;
-                const newy = y+piece.position.y;
+                const newx: number = x+piece.position.x;
+                const newy: number = y+piece.position.y;
                 if (value){
                     context.fillStyle = '#4d674c';
                     context.fillRect(newx, newy, 1, 1);
@@ -141,9 +142,9 @@ onMounted(()=>{
         }
     }
     const arrowUp_ = () => {
-        const rotated = [];
+        const rotated: boolean[] = [];
         for (let i = 0; i < piece.shape[0].length; i++){
-            const row = [];
+            const row: boolean[] = [];
             for (let j = piece.shape.length-1; j >= 0; j--){
                 row.push(piece.shape[j][i]);
             }
@@ -192,7 +193,7 @@ onMounted(()=>{
                 removeRows();
             }
     }
-    const checkCollision = () => {
+    const checkCollision = (): void => {
         return piece.shape.find((row,y) => {
             return row.find((value,x) => {
                 return (
@@ -201,7 +202,7 @@ onMounted(()=>{
             })
         })
     }
-    const gameOver = () => {
+    const gameOver = ():void => {
         score.value = 0;
         lvl.value = 0;
         board.forEach((row) => {
@@ -230,7 +231,7 @@ onMounted(()=>{
     }
 
     const removeRows = () => {
-        const rowsToRemove = [];
+        const rowsToRemove: boolean[] = [];
 
         board.forEach((row,y) => {
             if (row.every(value => value)){
@@ -239,7 +240,7 @@ onMounted(()=>{
         })
         rowsToRemove.forEach(y => {
             board.splice(y,1);
-            const newRow = Array(board_width).fill(f);
+            const newRow: boolean[] = Array(board_width).fill(f);
             board.unshift(newRow);
             score.value += 10;
             lvl.value = Math.ceil(score.value/100)-1;
