@@ -1,0 +1,368 @@
+<script setup lang="ts">
+    import { ref, Ref, computed, onMounted} from 'vue';
+    const f: boolean = false;
+    const t: boolean = true;
+    let pause: Ref<boolean> = ref(f);
+    let gameOver_: Ref<boolean> = ref(t);
+    let gameOverAlert: Ref<string> = ref('');    
+    let score: Ref<number> = ref(0);
+    let lvl: Ref<number> = ref(0);
+
+onMounted(()=>{
+    //1. configuracion inicial
+    const canvas = document.querySelector('canvas');
+    const context = canvas.getContext('2d');
+    const block_size: number = 20;
+    const board_width: number = 14;
+    const board_height: number = 24;
+
+    canvas.width = block_size*board_width;
+    canvas.height = block_size*board_height;
+    context.scale(block_size, block_size);
+
+    //2. game loop
+    let dropCounter: number = 0;
+    let lastTime: number = 0;
+    
+    const update = (time: number = 0):void =>  {
+        const deltaTime = time - lastTime;
+        lastTime = time;
+        dropCounter += deltaTime;
+        let vel = 1000/(lvl.value+1);
+        if (gameOver_.value && !pause.value){
+            if (dropCounter > vel) {
+                piece.position.y++;
+                dropCounter = 0;
+                ifCollisionRemoveRows();
+            }
+            draw();
+            window.requestAnimationFrame(update);
+        }
+    }
+    
+    
+    //3. board
+    const board: boolean[][] = new Array(board_height).fill(f).map(() => new Array(board_width).fill(f));
+
+    // 4. piece player
+    let n: number = Math.floor(board_width / 2 - Math.floor(Math.random() * 3))
+    const pieces: object = [
+        [
+            [t,t],
+            [t,t]
+        ],
+        [
+            [t,t,t,t]
+        ],
+        [
+            [f, t, f],
+            [t, t, t]
+        ],
+        [
+            [t, t, f],
+            [f, t, t]
+        ],
+        [
+            [f, t, t],
+            [t, t, f]
+        ],
+        [
+            [t, t, t],
+            [f, f, t]
+        ],
+        [
+            [f, f, t],
+            [t, t, t]
+        ]
+    ]
+    const shape = pieces[Math.floor(Math.random() * pieces.length)];
+    const piece: objec = {
+        position: {x:n,y:0},
+        shape: shape
+    }
+
+    const draw = ():void => {
+        context.fillStyle = '#4d674c';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        board.forEach((row,y) => {
+            row.forEach((value,x) => {
+                if (value){
+                    context.fillStyle = '#4d674c';
+                    context.fillRect(x, y, 1, 1);
+                    context.fillStyle = '#193737';
+                    context.fillRect(x+0.05, y+0.05, 0.9, 0.9)
+                    context.fillStyle = '#4d674c';
+                    context.fillRect(x+0.2, y+0.2, 0.6, 0.6)
+                    context.fillStyle = '#193737';
+                    context.fillRect(x+0.3, y+0.3, 0.4, 0.4)
+                }
+            })
+        })
+
+        piece.shape.forEach((row,y) => {
+            row.forEach((value,x) => {
+                const newx: number = x+piece.position.x;
+                const newy: number = y+piece.position.y;
+                if (value){
+                    context.fillStyle = '#4d674c';
+                    context.fillRect(newx, newy, 1, 1);
+                    context.fillStyle = '#193737';
+                    context.fillRect(newx+0.05, newy+0.05, 0.9, 0.9)
+                    context.fillStyle = '#4d674c';
+                    context.fillRect(newx+0.2, newy+0.2, 0.6, 0.6)
+                    context.fillStyle = '#193737';
+                    context.fillRect(newx+0.3, newy+0.3, 0.4, 0.4)
+                }
+            })
+        })
+    }
+
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key == 'ArrowUp' || event.key === 'ArrowDown') {
+            event.preventDefault();
+        }
+    });
+    const arrowDown_ = () => {
+        piece.position.y++;
+        ifCollisionRemoveRows();
+    }
+    const arrowLeft_ = () => {
+        piece.position.x--;
+        if (checkCollision()){
+            piece.position.x++;
+        }
+    }
+    const arrowRight_ = () => {
+        piece.position.x++;
+        if (checkCollision()){
+            piece.position.x--;
+        }
+    }
+    const arrowUp_ = () => {
+        const rotated: boolean[] = [];
+        for (let i = 0; i < piece.shape[0].length; i++){
+            const row: boolean[] = [];
+            for (let j = piece.shape.length-1; j >= 0; j--){
+                row.push(piece.shape[j][i]);
+            }
+        rotated.push(row);
+        }
+        const previousShape = piece.shape;
+        piece.shape = rotated;
+        if (checkCollision()){
+            piece.shape = previousShape;
+        }
+    }
+    const pausing = () => {
+        pause.value = !pause.value;
+        update();
+    }
+    const restarting = () => {
+        gameOver_.value = t;
+        gameOver();
+        update();
+    }
+    document.addEventListener('keydown',event => {
+        if (event.key == 'ArrowLeft') {
+            arrowLeft_();
+        }
+        if (event.key == 'ArrowRight') {
+            arrowRight_();
+        }
+        if (event.key =='ArrowDown'){
+            arrowDown_();
+        }
+        if (event.key =='ArrowUp'){
+            arrowUp_();
+        }
+        if (event.keyCode === 82) {
+            restarting();
+        }
+        if (event.keyCode === 80) {
+            pausing();
+        }
+    })
+
+    const ifCollisionRemoveRows = () => {
+        if (checkCollision()){
+                piece.position.y--;
+                solidifyPiece();
+                removeRows();
+            }
+    }
+    const checkCollision = (): void => {
+        return piece.shape.find((row,y) => {
+            return row.find((value,x) => {
+                return (
+                value != f  &&  board[y + piece.position.y]?.[x + piece.position.x] != f
+                )
+            })
+        })
+    }
+    const gameOver = ():void => {
+        score.value = 0;
+        lvl.value = 0;
+        board.forEach((row) => {
+           row.fill(f);
+        })
+        piece.shape = pieces[Math.floor(Math.random() * pieces.length)];
+        piece.position = {x:Math.floor(board_width / 2 - Math.floor(Math.random() * 3)),y:0};
+    }
+
+    const solidifyPiece = () => {
+        piece.shape.forEach((row,y) => {
+            row.forEach((value,x) => {
+                if (value){
+                    board[y+piece.position.y][x+piece.position.x] = t;
+                }
+            })
+        })
+        piece.position.x = Math.floor(board_width / 2 - Math.floor(Math.random() * 3));
+        piece.position.y = 0;
+        piece.shape = pieces[Math.floor(Math.random() * pieces.length)];
+        if (checkCollision()){
+            gameOver_.value = f;
+            gameOverAlert = `Game Over!! score: ${score.value}, level: ${lvl.value}`;
+            gameOver();
+        }
+    }
+
+    const removeRows = () => {
+        const rowsToRemove: boolean[] = [];
+
+        board.forEach((row,y) => {
+            if (row.every(value => value)){
+                rowsToRemove.push(y);
+            }
+        })
+        rowsToRemove.forEach(y => {
+            board.splice(y,1);
+            const newRow: boolean[] = Array(board_width).fill(f);
+            board.unshift(newRow);
+            score.value += 10;
+            lvl.value = Math.ceil(score.value/100)-1;
+        })
+    }
+    const mouseD = (element, action) => {
+        element.onmousedown = () => {
+            action();
+        }
+    }
+
+    mouseD(document.getElementById('reboot'), restarting); 
+    mouseD(document.getElementById('pause'), pausing);
+    mouseD(document.getElementById('rotate'), arrowUp_); 
+    mouseD(document.getElementById('bottom'), arrowDown_);
+    mouseD(document.getElementById('right'), arrowRight_); 
+    mouseD(document.getElementById('left'), arrowLeft_);
+    update();
+    
+    
+})
+</script>
+<template>
+    <div class="body">
+        <h2>Tetris Rush</h2>
+        <div class="cont">
+            <section>
+
+                <strong>-Puntuación: <span v-if="gameOver_">{{score}}</span></strong>
+                <strong>-Nivel: <span v-if="gameOver_">{{lvl}}</span></strong>
+                <strong>-<span v-if="!gameOver_">{{gameOverAlert}}</span></strong>
+            </section>
+            <canvas></canvas>
+        </div>
+        <div class="ctrls">
+                <button class="ctrls__btn" id="left">
+                    <span class="material-symbols-outlined">
+                    keyboard_arrow_left
+                    </span>
+                </button>
+                <button class="ctrls__btn" id="right">
+                    <span class="material-symbols-outlined">
+                    keyboard_arrow_right
+                    </span>
+                </button>
+                <button class="ctrls__btn" id="bottom">
+                    <span class="material-symbols-outlined">
+                    keyboard_arrow_down
+                    </span>
+                </button>
+                <button class="ctrls__btn" id="rotate">
+                    <span class="material-symbols-outlined">
+                        keyboard_arrow_up
+                    </span>
+                </button>
+                <button class="ctrls__btn" id="pause">
+                    <span class="material-symbols-outlined">
+                    play_pause
+                    </span>
+                </button>
+                <button class="ctrls__btn" id="reboot">
+                    <span class="material-symbols-outlined">
+                    restart_alt
+                    </span>
+                </button>
+        </div>
+    </div>
+</template>
+<style scoped lang="scss">
+.cont{
+    margin-top: 2em;
+    border: solid #193737;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    background-color: #193737;
+    border-radius: 15px;
+    border: solid #193737;
+    section, {
+        background-color: #4d674c;
+        border-bottom: solid #193737;
+        color: #193737;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+}
+.body {
+    background-color: #4d674c;
+    border-radius: 15px;
+    border: solid #193737;
+    color: #193737;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+    .ctrls {
+        background-color: #4d674c;
+        color: #193737;
+        display: flex;
+        flex-direction: column-reverse;
+        .ctrls__btn {
+            background-color: #4d674c;
+            border-bottom: solid #193737;
+            color: #193737;
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            align-items: center;
+            border-radius: 8px;
+                span {
+                    font-size: 250%;
+                }
+            }
+    }
+}
+h2 {
+    position: absolute;
+    width: 335.6px;    
+}
+canvas {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+</style>

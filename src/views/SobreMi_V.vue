@@ -61,7 +61,7 @@
 </template>
 <style scoped lang="scss">
 .mihv{
-  background-color: $colorC;
+  background-color: $p1;
   width: 100%;
   overflow-x: hidden;
   display: flex;
@@ -74,7 +74,7 @@
     position: relative;
     padding:0;
     margin:0;
-    background-color: $colorC;
+    background-color: $p1;
     left: 40px;
     padding-right: 40px;
     transition: all 250ms linear;
@@ -83,13 +83,13 @@
     font-size: $domine;
   
     h1 {
-            color: black;
-            text-shadow: 2px 2px 4px $colorE;
+            color: $a1;
+            text-shadow: 3px 3px 3px black;
             padding: 1em 0;
             text-align: center;
         }
     h2 {
-            color: $colorB;
+            color: $a2;
             font-weight: bold;;
             padding: 0.6em 0;
             text-align: left;
@@ -97,16 +97,17 @@
     }
     p {
       padding: 0.4em 0;
+      color: $s2;
     }
     a{
       padding: 0.3em  5%;
-      color: $colorB;
+      color: $a2;
       font-weight: bold;
       text-align: left;
       margin-left: 0;
       text-decoration: none;
       &:hover {
-        color: $colorD;
+        color: $a1;
       }
       &:last-child {
         padding-bottom: 1em;
@@ -114,7 +115,7 @@
     }
     ul {
       padding: 0.15em  0% 0% 2em;
-
+      color: $s2;
       
     }
 
@@ -168,13 +169,13 @@
         left: 0;
         padding-right: 0;
         h1 {
-          margin-top: 50px;
+          margin-top: 35px;
         }
         &.active {
         left: 0;
         padding-right: 0;  
           h1 {
-            margin-top: 200px;
+            margin-top: 180px;
           }     
         }
     }

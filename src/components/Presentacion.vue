@@ -4,7 +4,7 @@
 <template>
     
         
-        <h2 class="title">Portafolio de desarrollador web</h2>
+        <h2 class="title">PORTAFOLIO DE DESARROLLADOR WEB</h2>
     <div class="cont">
         <section class="presentacion">
             <article class="presentacion__image presentacion__item">
@@ -30,19 +30,18 @@
         box-sizing: border-box;
         
     }
-    h2{
-        font-size: 24px;
-    }
+    
     .title{
         text-align: center;
-        color: black;
+        color:  $a1;        
+        text-shadow: 3px 3px 3px black;
         width: 100%;
         margin: 0;
         padding: 0.5em 0;
         font-family: $domine;
-        border-top: 0.5em solid $colorD;
-        border-bottom: 0.5em solid $colorD;
-        background: $colorE;
+        border-top: 0.5em solid $p1;
+        border-bottom: 0.5em solid $p1;
+        background: $p1;
         font-size: 27px;
     }
     .presentacion{
@@ -50,22 +49,25 @@
         margin: 15px auto 0 auto;
         font-family: $domine;
         line-height: 1.618;
-        color: black;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         gap: 1.618em;
         flex-wrap: wrap;
         .presentacion__text {
-            
-            border-top-right-radius: 40px;
-            border-top-left-radius: 40px;
-            border-bottom-right-radius: 40px;
+            h2{
+                font-size: 24px;
+                
+            }
+            color: black;      
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border-bottom-left-radius: 30px;
             text-align: center;
             width: 100%;
             min-width: 300px;
             padding:5%;
-            background-color: white;
+            background-color: $a2;
             
         }
     }
@@ -76,15 +78,22 @@
         flex-grow: 1;
     }
     .presentacion__img {
-        width: 90%;
+        width: 100%;
         min-width: 300px;
-        border-radius: 40px;
+        border-radius: 30px;
         margin: 0;
         padding: 0;
     }
-
-
-    
+    @media (min-width: $xl) {
+        .presentacion__img {
+            width: 90%;
+        }
+    }
+    @media (min-width: $xxl) {
+        .presentacion__img {
+            width: 80%;
+        }
+    }    
     @media (max-width: 300px) {
         .presentacion__img {
             display: none;

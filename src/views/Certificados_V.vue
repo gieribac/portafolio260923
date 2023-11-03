@@ -155,30 +155,17 @@
 </template>
 <style scoped lang="scss">
   .certs {
-    background-color: $colorC;
+    background-color: $p1;
     width: 100%;
     overflow-x: hidden;
   }
 
   .contenido {
     position: relative;
-    transition: all 250ms linear;
     max-height: 100%;
     z-index: 1;
     padding-right: 40px;
     text-align: center;
-    &.active {
-      padding-right: 200px;
-    }
-  }
-
-  a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: $colorB;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
   }
 
   .principal {
@@ -192,15 +179,19 @@
 
     .nbar {
       li a {
-      background-color: $colorA;
-      color: white;
+      background-color: $a2;
+      color: black;
       font-weight: bold;
-      border-radius: 15px;
+      border-radius: 5px;
       margin: 2px;
-
+      display: inline-block;
+      padding: 10px 20px;
+      text-decoration: none;
       &:hover {
-        background-color: $colorD;
-        color: black;
+        background-color: $a1;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
       }
     }
 
@@ -209,22 +200,20 @@
     h1 {
       text-align: center;
       padding: 0.4em 7%;
-      color: black;
-      text-shadow: 2px 2px 4px $colorE;
+      color: $a1;
+      text-shadow: 3px 3px 3px black;
     }
 
-    .mySlides {
-      display: none;
-      max-height: 1100px;
-      overflow: auto;
-      border: 2px solid #272643;
+    .mySlides1, .mySlides2{
+      max-height: min-content;
       border-radius: 15px;
-      scrollbar-color: #272643 #2c698d;
+      scrollbar-color: black red;
       scrollbar-width: 5px;
     }
 
     img {
       vertical-align: middle;
+      border-radius: 10px;
     }
 
     li {
@@ -251,11 +240,12 @@
       transition: 0.6s ease;
       border-radius: 0 15px 15px 0;
       user-select: none;
-      background-color: $colorD;
+      background-color: $a2;
       opacity: 0.5;
+      transform: translate(0, -50%);
 
       &:hover {
-        background-color: #2c698d;
+        background-color: $a1;
       }
     }
 
@@ -269,14 +259,8 @@
       border-radius: 3px 0 0 3px;
     }
 
-    .text {
-      color: #f2f2f2;
-      font-size: 15px;
-      padding: 8px 12px;
-      position: absolute;
-      bottom: 8px;
-      width: 100%;
-      text-align: center;
+    p {
+      color: $s2;
     }
 
     .numbertext {
@@ -292,21 +276,21 @@
       height: 15px;
       width: 15px;
       margin: 0 2px;
-      background-color: #717171;
+      background-color: $a2;
       border-radius: 50%;
       display: inline-block;
       transition: background-color 0.6s ease;
+      &:hover {
+        background-color: $a1;
+      }
     }
 
-    .active,
-    .dot:hover {
-      background-color: #272643;
-    }
+    
 
     @media only screen and (max-width: 300px) {
       .prev,
       .next,
-      .text {
+      p {
         font-size: 11px;
       }
     }
@@ -315,30 +299,37 @@
       .contenido {
         left: 0px;
         &.active {
-          transition: all 200ms linear;
           left: 180px;
+          padding-right: 200px;
         }
+      }
+      .mySlides2, .mySlides1{
+
+          border: 2px solid $a2;
       }
     }
 
     @media (max-width: $sm) {
       img {
         max-width: 90%;
-        max-height: 90%;
       }
       .numbertext {
       left: 15px;
       }
-
+      
       .contenido {
-        right: 10px;
-        padding-right: 0;
-
+        top: 50px;
         &.active {
-          transition: all 200ms linear;
-          right: 10px;
-          padding-right: 0;
+          top: 190px;
         }
+      }
+      .principal .prev {
+         font-size: 10px;
+         left: 22px; 
+      }
+      .principal .next {
+        font-size: 10px;
+        right: 22px; 
       }
     }
 </style>

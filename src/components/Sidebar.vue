@@ -7,7 +7,6 @@
     const toggleClass = ():void => {
         isActive.value = !isActive.value;
         emit("toggle",isActive.value);
-        console.log("click")
   }
 </script>
 <template>
@@ -51,29 +50,44 @@
   padding: 0px;
 }
 #sidebar {
-  z-index:2;
-  
+  z-index:2;  
 }
-p{
+p {
   display: flex;
   align-items: center;
-      
+  color: $p1;
+  height: 100%;
 }
+.router-link-exact-active{
+  cursor: default;
+  p{
+    color: $p2;
+  }
+} 
 #sidebar.active .toggle-btn span {
-transform: rotate(90deg);
-color: black;
-&:hover {
-      color: black;
-    }
+  transform: rotate(90deg);
+  color: $p1;
+  font-weight: bold;
+  right: 5px;
+  cursor: pointer;
+} 
+#sidebar .toggle-btn span {
+    cursor: pointer;
+}
+.logo {
+
+  border-radius: 15px;
+  border-style: solid;
+    border-color: $colorE;
+    background-color: $colorE;
 }
 @media (min-width: $sm) {
   #sidebar {
     position: fixed;
     width: 200px;
     height: 100%;
-    background-color: $colorC;
+    background-color: $p1;
     left: -160px;
-    transition: all 200ms linear;
     margin-top: 0;
     display: inline;
     font-family: $domine;
@@ -82,8 +96,7 @@ color: black;
   #sidebar.active {
     left: 0;
     width: 200px;
-    background-color: $colorC;
-    transition: all 200ms linear;
+    background-color: $p1;
     .toggle-btn {
       right: 30px;
     }
@@ -91,7 +104,7 @@ color: black;
 
   #sidebar .toggle-btn {
     position: absolute;
-    left: 160px;
+    left: 152px;
     top: 0;
     text-align: center;
     height: 40px;
@@ -100,7 +113,7 @@ color: black;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: $colorD;
+    background-color: $p2;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     padding: 0 10px;
@@ -112,8 +125,9 @@ color: black;
     font-size: 30px;
     margin: 0;
     padding: 0;
-    cursor: pointer;
     transition: all 500ms linear;
+    position: relative;
+    z-index: 2;
   }
 
   #sidebar .toggle-btn a {
@@ -127,14 +141,8 @@ color: black;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     text-decoration: none;
-    color: black;
     width: 90px;
     transition: all 200ms linear;
-  }
-
-  #sidebar .toggle-btn a:hover {
-    font-weight: bold;
-    color: $colorB;
   }
 
   #sidebar ul {
@@ -165,14 +173,10 @@ color: black;
   }
 
   .logo {
-    border-radius: 15px;
     display: block;
     margin: 25px auto;
     width: 100px;
     height: 110px;
-    border-style: solid;
-    border-color: $colorE;
-    background-color: $colorE;
   }
 
   #a {
@@ -187,7 +191,6 @@ color: black;
     position: absolute;
     left: 160px;
     top: 0;
-    cursor: pointer;
     width: 40px;
     margin: 0;
     padding: 0;
@@ -199,7 +202,7 @@ color: black;
     width: 200px;
     justify-content: center;
     align-items: center;
-    background-color: $colorC;
+    background-color: $p1;
     position: relative;
     right: 15px;
   }
@@ -210,7 +213,7 @@ color: black;
     width: 200px;
     justify-content: center;
     align-items: center;
-    background-color: $colorD;
+    background-color: $p2;
     position: relative;
     right: 15px;
   }
@@ -220,7 +223,6 @@ color: black;
     margin: 0;
     padding: 8px;
     border-radius: 15px;
-    color: black;
     text-decoration: none;
     height: 2em;
     text-align: left;
@@ -237,14 +239,14 @@ color: black;
   #sidebar .active > ul > .cont-li .router-link-active {
     font-weight: bold;
     margin-left: 0;
-    background-color: $colorC;
+    background-color: $p1;
     transition: all 200ms linear;
   }
 
   #sidebar .active > ul > .cont-li .router-link-active::before,
   #sidebar .active > ul > .cont-li .router-link-active::after {
     content: "";
-    background-color: $colorD;
+    background-color: $p2;
     height: 100vh;
     position: absolute;
     width: 200px;
@@ -270,7 +272,7 @@ color: black;
     left: 0;
     width: 100%;
     height: min-content;
-    background-color: $colorD;
+    background-color: $p2;
     overflow-y: auto;
     font-size: 22px;
     overflow-y: hidden;
@@ -279,7 +281,6 @@ color: black;
     position: relative;
     top: 0;
     left: 0;
-    color: black;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -287,7 +288,6 @@ color: black;
 
     a {
       text-decoration: none;
-      color: black;
       font-size:22px;
       &:hover {
         font-weight: bold;
@@ -301,13 +301,11 @@ color: black;
     height: 50px;
     font-size: 35px;
     font-weight: bold;
-    cursor: pointer;
     margin: 0px;
     padding:5px;
-    cursor: pointer;
     margin-right: 10px;
     border: solid;
-    border-color: $colorD;
+    border-color: $p2;
   }
 
   .sidebar .toggle-btn > span {
@@ -324,7 +322,7 @@ color: black;
   .sidebar ul {
     transition: all 200ms linear;
     display: none;
-    > .cont-li >.li > p{
+    > .cont-li >.li > p {
       display: flex;
       align-items: center;
       height: 1.3em;
@@ -344,25 +342,20 @@ color: black;
   }
   
   .logo {    
-    border-radius: 6px;
     display: block;
     margin-bottom: 1em;
-    width: 120px;
-    height: 145px;
-    border-style: solid;
-    border-color: $colorD;
-    background-color: $colorD;
+    width: 100px;
+    height: 120px;
     transition: all 200ms linear;
     position: relative;
     right: 80px;
-    top: 70px;  
+    top: 60px;  
   }
   .sidebar ul li.actual {
     font-weight: bold;
   }
   .li {
     text-decoration: none;
-    color: black;
     position: relative;
     bottom: 85px;     
     left: 70px;
@@ -374,10 +367,10 @@ color: black;
   .router-link-active {
     font-weight: bold;
     font-size: 25px;
-    cursor: default;
-    &:hover {
-      color: black;
+    p {
+      color: $p1;
     }
+    cursor: default;
   }
   .cont-li{
     position: relative;

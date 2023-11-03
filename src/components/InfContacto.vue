@@ -69,7 +69,7 @@ import { RouterLink } from 'vue-router'
 .container {
     font-family: $domine;
     text-align: center;
-    position:relative
+    position: relative;
 }
 .container__item{
     width: 100%;
@@ -82,9 +82,9 @@ import { RouterLink } from 'vue-router'
 .container__infcontacto{
     width: calcular-ancho-contenedor(100%);
     color: black;
-    background-color: $colorE;
+    background-color: $s2;
     margin: 0.618em auto;
-    border-radius: 40px;
+    border-radius: 30px;
     line-height: 1.618;
     h2 {
         font-size: 22px;
@@ -117,17 +117,19 @@ import { RouterLink } from 'vue-router'
 .container__intro{
     width: 5%;
     font-size: 18px;
-    background-color: $colorD;
-    color: black;
+    background-color: $a1;
     font-weight: bold;
     padding: 0.5em 1em;
     width: 100%;    
     position: relative;
     text-decoration: none;
-    &:hover {        
-        border-top-right-radius: 20px;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+    border-radius: 5px;
+    color: black;
+    &:hover {     
+        background-color: $a1;   
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
     }
 }
 
@@ -145,7 +147,7 @@ svg {
         bottom: 0;  
         height: 400px;      
         width: 100%;
-        fill: $colorA;
+        fill: $s1;
     }
     @media (max-width: 480px) {
     .container__infcontacto {

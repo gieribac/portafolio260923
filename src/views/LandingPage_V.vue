@@ -20,7 +20,7 @@
     }    
 
     .container{
-        background-color: $colorC;
+        background-color: $p1;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -28,10 +28,20 @@
         height: min-content;
     }
     #cont{
-        height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        background-color: $colorC;
+        background-color: $p1;
+    }
+    @media (min-width: 1054px){
+        #cont{ 
+            height: 100vh;
+        }   
+    }
+    @media only screen and (min-width: $lg) and (max-width: 1054px) {
+        #cont{ 
+            height: 100vh;
+            padding-top: 40%
+        } 
     }
 </style>

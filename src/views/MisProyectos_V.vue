@@ -27,7 +27,7 @@
       </p>
       <div class="exproy"> 
         <h2>Aplicativo web CMR</h2>
-        <p>A continuaciñon se incluyen la vista de la landing page y algunos de los sitios del perfil de administrador, dorector técnico y técnico coordinador</p>
+        <p>A continuación se incluyen la vista de inicio de sesión y algunos de los sitios del perfil de administrador, dorector técnico y técnico coordinador</p>
         <div class="imagen">
         <img src="/src/assets/misproy/vtek/Administrador_CRM-40.jpg" alt="imagen">
         <br>
@@ -39,14 +39,14 @@
         <br>
         <img src="/src/assets/misproy/vtek/Tecnico_coordinador_CRM-17.jpg" alt="imagen">
         </div>
-        <p>Este sitio web es una SPA con opciones como creación de diferentes usuarios con diferentes roles, adminsitración de información de clientes y generación reportes en PDF. Tecnologias utilizadas: Javascript en el fronted, backend Firestore</p>
+        <p>Este sitio web es una SPA con opciones como creación de varios usuarios con diferentes roles, adminsitración de información de clientes y generación reportes en PDF. Tecnologias utilizadas: Javascript en el fronted, backend Firestore</p>
         <a href="https://github.com/gieribac/proyecto_vtek.git" target="_blank">
         Repositorio proyecto CMR Vtek
         </a><br>
       </div>
         <div class="exproy"> 
         <h2>Landing page videos de publicidad</h2>
-        <p>ALamding page realizada para exponer videos cortos publicitarios, para acceder hay que conocer el numero del telefono del candidato</p>
+        <p>Realizada para exponer videos cortos publicitarios, para acceder hay que conocer el numero del telefono del candidato</p>
         <div class="imagen">
         <img src="/src/assets/misproy/lagencambio.jpg" alt="imagen">
         <br>
@@ -143,13 +143,12 @@
 }
 .contenido {  
     position: relative;
-    background-color: $colorC;
+    background-color: $p1;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
     align-items: center;
-    transition: all 250ms linear;
     max-height: 100%;
     z-index: 1;
     left: 40px;
@@ -162,15 +161,16 @@
 }
 
 .principal img {  
-    border: $colorD 2px solid;
+    border: $a2 2px solid;
     max-width: 90%;
+    border-radius: 15px;
 }
 
 .principal h1{
     text-align:center;
     padding: 0.4em 7%;
-    color: black;
-    text-shadow: 2px 2px 4px $colorE;
+    color: $a1;
+    text-shadow: 3px 3px 3px black;
 }
 
 .principal_sub {
@@ -184,18 +184,21 @@
 .principal h2{
     text-align:center;
     padding: 0.3em 2%;
+    color: $a2;
 }
 
 .principal p{
   padding: 0.3em  5%;
+  color: $s2;
 }
 
 .principal a {
   padding: 0.3em  5%;
-  color: $colorB;
+  color: $a2;
   font-weight: bold;
+  text-decoration: none;
   &:hover {
-    color: $colorD;
+    color: $a1;
   }
 }
 
@@ -217,9 +220,11 @@
   .contenido {
     left: 0;
     padding-right: 0;
+    top: 45px;
     &.active {
     left: 0;
     padding-right: 0;
+    top: 190px;
     }
   }
 }

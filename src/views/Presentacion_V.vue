@@ -1,5 +1,6 @@
 <script setup lang="ts"> 
     import Sidebar from '../components/Sidebar.vue';
+    import Tetris from '../components/Tetris.vue';
     import {ref, Ref} from 'vue';
     let isActive: Ref<boolean> = ref(false);
     const active =(m:boolean):void => {
@@ -16,14 +17,26 @@
             <div>			
                 <h1>Presentación</h1>
                 <p class="invitation">Reproduce el video para presentarme</p>                             
-                    <iframe :class="{'active': isActive}" src="https://www.youtube.com/watch?v=Yx26Q8eNeWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                    </iframe>
-                    <p class="alt_">Cargando video</p>      
+                    <iframe :class="{'active': isActive}" class="cont" src="https://www.youtube.com/embed/lN2i53jiA84?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe> 
+                    <p id="game">Juega tetris, puedes usar los botones del costado derecho o las teclas 'R', 'P' y las flechas.</p>
+                    <Tetris id="tetris"/>    
             </div>
+            
         </div>
     </div>
 </template>
 <style lang="scss" scoped>
+#tetris {
+    margin: 0.5em;
+}
+#game {
+    margin-top: 2em;
+}
+p {
+    font-family: $domine;
+    color: $s2;
+}
 .presentacion {
     width: 100%;
     overflow-x: hidden;
@@ -31,7 +44,7 @@
 .content {
     position: relative;
     margin:0;
-    background-color: $colorC;
+    background-color: $p1;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -39,10 +52,9 @@
     align-items: center;
     left: 40px;
     padding-right: 40px;
-    transition: all 200ms linear;
-    height: 100vh;
+    
     z-index: 1;
-    transition: all 200ms linear;
+    
     
     > div {
         display: flex;
@@ -58,60 +70,64 @@
         > * {
             text-align:center;
             padding: 0.2em;
+            font-size: $domine;
             
         }
         h1 {
-            color: black;
-            text-shadow: 2px 2px 4px $colorE;
+            color: $a1;
+            text-shadow: 3px 3px 3px black;
+            font-size: $domine;
         }
     }
 }
-
+iframe {
+    border-radius: 15px;
+}
 @media (min-width: $xl) {
     iframe {
         width: calc(($xxl - 40px)/$na);
         height: calc(($xxl - 40px)/$na/1.77);
-        transition: all 200ms linear;
+        
         &.active{
             width: calc(($xxl - 200px)/$na);
             height: calc(($xxl - 200px)/$na/1.77);
         }
     }
 }
-@media (max-width: $xl) and (min-width: $lg) {//1200 - $lg: 992px;
+@media (max-width: $xl) and (min-width: $lg) {
     iframe {
         width: calc(($xl - 40px)/$na);
         height: calc((($xl - 40px)/$na)/1.77);
-        transition: all 200ms linear;
+        
         &.active{
                 width: calc(($xl - 200px)/$na);
                 height: calc((($xl - 200px)/$na)/1.77);
         }   
     }
 }
-@media (max-width: $lg) and (min-width: $md) {//$md: 768px;
+@media (max-width: $lg) and (min-width: $md) {
   iframe {
         width: calc(($lg - 40px)/$na);
         height: calc(($lg - 40px)/$na/1.77);
-        transition: all 200ms linear;
+        
     &.active{
         width: calc(($lg - 200px)/$na);
         height: calc(($lg - 200px)/$na/1.77);
     }
   }
 }
-@media (max-width: $md) and (min-width: $sm){//$sm: 576px;$md: 768px;
+@media (max-width: $md) and (min-width: $sm){
     iframe {
         width: calc(($md - 40px)/$na);
         height: calc(($md - 40px)/$na/1.77);
-        transition: all 200ms linear;
+        
         &.active{
             width: calc(($md - 200px)/$na);
             height: calc(($md - 200px)/$na/1.77);
         }
     }
 }
-@media (max-width: $sm) {//576px;
+@media (max-width: $sm) {
     iframe {
         width: calc(($sm - 40px)/$na);
         height: calc(($sm - 40px)/$na/1.77);
@@ -119,9 +135,11 @@
     .content{
         left: 0;
         padding-right: 0;
+        top: 50px;
         &.active {
-        left: 0;
-        padding-right: 0;
+            left: 0;
+            padding-right: 0;
+            top: 190px;
         }
     }
 }
