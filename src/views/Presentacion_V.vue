@@ -21,7 +21,7 @@
             <div>			
                 <h1>Presentación</h1>
                 <p class="invitation">Reproduce el video para ver presentación</p> 
-                    <img v-if="flag" @click="player" src="src/assets/misproy/play_.jpeg" alt="click para reproducir" class="iframe" style="cursor: pointer">                            
+                    <img v-if="flag" @click="player" src="src/assets/misproy/play.jpg" alt="click para reproducir" class="iframe" style="cursor: pointer">                            
                     <iframe v-else="flag" :class="{'active': isActive}" class="iframe" src="https://www.youtube.com/embed/lN2i53jiA84?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                     </iframe> 
                     <p id="game">Juega tetris, puedes usar los botones del costado derecho o las teclas 'R', 'P' y las flechas.</p>
