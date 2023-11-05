@@ -78,8 +78,8 @@ p {
 
   border-radius: 15px;
   border-style: solid;
-    border-color: $colorE;
-    background-color: $colorE;
+    border-color: $a1;
+    background-color: $a1;
 }
 @media (min-width: $sm) {
   #sidebar {
@@ -233,7 +233,6 @@ p {
 
   .li:hover {
     font-weight: bold;
-    color: $colorB;
   }
 
   #sidebar .active > ul > .cont-li .router-link-active {
@@ -291,7 +290,6 @@ p {
       font-size:22px;
       &:hover {
         font-weight: bold;
-        color: $colorB
       }
     }
   }  
@@ -360,7 +358,6 @@ p {
     bottom: 85px;     
     left: 70px;
     &:hover {
-      color: $colorB;
       font-weight: bold;
     }
   }

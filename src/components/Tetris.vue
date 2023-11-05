@@ -12,9 +12,9 @@ onMounted(()=>{
     //1. configuracion inicial
     const canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
-    const block_size = 20;
-    const board_width = 14;
-    const board_height = 24;
+    const block_size = 18;
+    const board_width = 15;
+    const board_height = 28;
 
     canvas.width = block_size*board_width;
     canvas.height = block_size*board_height;
@@ -315,23 +315,20 @@ onMounted(()=>{
     height: min-content;
     display: flex;
     flex-direction: column;
-    background-color: #193737;
-    border-radius: 15px;
-    border: solid #193737;
+    background-color: #4d674c;
+    border-radius: 10px;
+
     section, {
-        background-color: #4d674c;
         border-bottom: solid #193737;
         color: #193737;
         display: flex;
         flex-direction: column;
         text-align: left;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
     }
 }
 .body {
     background-color: #4d674c;
-    border-radius: 15px;
+    border-radius: 10px;
     border: solid #193737;
     color: #193737;
     display: flex;
@@ -351,11 +348,20 @@ onMounted(()=>{
             font-weight: bold;
             align-items: center;
             border-radius: 8px;
+            aspect-ratio: $na/1;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            justify-content: center;
+            
                 span {
                     font-size: 250%;
                 }
-            }
-    }
+        }
+            width: 100%;
+            
+    }   
 }
 h2 {
     position: absolute;
@@ -365,4 +371,6 @@ canvas {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
+
 </style>

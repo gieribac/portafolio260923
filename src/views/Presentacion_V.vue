@@ -27,9 +27,7 @@
     </div>
 </template>
 <style lang="scss" scoped>
-#tetris {
-    margin: 0.5em;
-}
+
 #game {
     margin-top: 2em;
 }
@@ -142,5 +140,11 @@ iframe {
             top: 190px;
         }
     }
+}
+@media only screen and (orientation: portrait) and (max-width: $sm) {
+  #tetris {
+    width: 100vw;
+    margin-left: 0;
+  }
 }
 </style>
