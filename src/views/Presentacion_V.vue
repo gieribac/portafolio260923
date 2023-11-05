@@ -3,6 +3,10 @@
     import Tetris from '../components/Tetris.vue';
     import {ref, Ref} from 'vue';
     let isActive: Ref<boolean> = ref(false);
+    let flag: Ref<boolean> = ref(true);
+    const player = () => {
+        flag.value=false;
+    }
     const active =(m:boolean):void => {
         isActive.value = m;
     }
@@ -16,8 +20,9 @@
         <div class="content" :class="{'active': isActive}">
             <div>			
                 <h1>Presentación</h1>
-                <p class="invitation">Reproduce el video para presentarme</p>                             
-                    <iframe :class="{'active': isActive}" class="cont" src="https://www.youtube.com/embed/lN2i53jiA84?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                <p class="invitation">Reproduce el video para ver presentación</p> 
+                    <img v-if="flag" @click="player" src="src/assets/misproy/play_.jpeg" alt="click para reproducir" class="iframe" style="cursor: pointer">                            
+                    <iframe v-else="flag" :class="{'active': isActive}" class="iframe" src="https://www.youtube.com/embed/lN2i53jiA84?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                     </iframe> 
                     <p id="game">Juega tetris, puedes usar los botones del costado derecho o las teclas 'R', 'P' y las flechas.</p>
                     <Tetris id="tetris"/>    
@@ -78,11 +83,11 @@ p {
         }
     }
 }
-iframe {
+.iframe{
     border-radius: 15px;
 }
 @media (min-width: $xl) {
-    iframe {
+    .iframe{
         width: calc(($xxl - 40px)/$na);
         height: calc(($xxl - 40px)/$na/1.77);
         
@@ -93,7 +98,7 @@ iframe {
     }
 }
 @media (max-width: $xl) and (min-width: $lg) {
-    iframe {
+    .iframe{
         width: calc(($xl - 40px)/$na);
         height: calc((($xl - 40px)/$na)/1.77);
         
@@ -104,7 +109,7 @@ iframe {
     }
 }
 @media (max-width: $lg) and (min-width: $md) {
-  iframe {
+  .iframe{
         width: calc(($lg - 40px)/$na);
         height: calc(($lg - 40px)/$na/1.77);
         
@@ -115,7 +120,7 @@ iframe {
   }
 }
 @media (max-width: $md) and (min-width: $sm){
-    iframe {
+    .iframe{
         width: calc(($md - 40px)/$na);
         height: calc(($md - 40px)/$na/1.77);
         
@@ -126,7 +131,7 @@ iframe {
     }
 }
 @media (max-width: $sm) {
-    iframe {
+    .iframe{
         width: calc(($sm - 40px)/$na);
         height: calc(($sm - 40px)/$na/1.77);
     }
