@@ -10,7 +10,7 @@
   }
 </script>
 <template>
-  <div :class="{'active': isActive}" class="sidebar">
+  <div>
     <div :class="{'active': isActive}" id="sidebar">
       <div @click="toggleClass" :class="{'active': isActive}" class="toggle-btn">
         <span>&#9776</span><div id="a"><RouterLink  :to="{name:'landingpage'}"><p><span class="material-symbols-outlined">home</span>Regresar</p></RouterLink></div> 
@@ -49,9 +49,10 @@
   margin: 0px;
   padding: 0px;
 }
-#sidebar {
+#sidebar,  #sidebar .active{
   z-index:2;  
 }
+
 p {
   display: flex;
   align-items: center;
@@ -83,20 +84,24 @@ p {
 }
 @media (min-width: $sm) {
   #sidebar {
+    
     position: fixed;
     width: 200px;
     height: 100%;
     background-color: $p1;
     left: -160px;
+    transition: left 250ms ease;
     margin-top: 0;
     display: inline;
     font-family: $domine;
+    
   }
 
   #sidebar.active {
     left: 0;
     width: 200px;
     background-color: $p1;
+    transition: left 250ms ease;
     .toggle-btn {
       right: 30px;
     }
@@ -125,7 +130,7 @@ p {
     font-size: 30px;
     margin: 0;
     padding: 0;
-    transition: all 500ms linear;
+    transition: all 250ms linear;
     position: relative;
     z-index: 2;
   }
@@ -265,7 +270,7 @@ p {
   }
 }
 @media (max-width: $sm){ 
-  .sidebar {
+  #sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -276,7 +281,7 @@ p {
     font-size: 22px;
     overflow-y: hidden;
   }
-  .sidebar .toggle-btn {
+  #sidebar .toggle-btn {
     position: relative;
     top: 0;
     left: 0;
@@ -293,7 +298,7 @@ p {
       }
     }
   }  
-  .sidebar .toggle-btn span {
+  #sidebar .toggle-btn span {
     display: inline-block;
     width: 50px;
     height: 50px;
@@ -306,18 +311,18 @@ p {
     border-color: $p2;
   }
 
-  .sidebar .toggle-btn > span {
+  #sidebar .toggle-btn > span {
     position: relative;
     bottom: 5px;
   }
-  .sidebar .toggle-btn.active > span {
+  #sidebar .toggle-btn.active > span {
     position: relative;
     bottom: -2px;
   }
-  .sidebar.active .toggle-btn  p {
+  #sidebar.active .toggle-btn  p {
     display:none;
   }
-  .sidebar ul {
+  #sidebar ul {
     transition: all 200ms linear;
     display: none;
     > .cont-li >.li > p {
@@ -326,7 +331,7 @@ p {
       height: 1.3em;
     }
   }
-  .sidebar.active ul{
+  #sidebar.active ul{
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -334,7 +339,7 @@ p {
     height: 140px;
     transition: all 200ms linear;
   }  
-  .sidebar ul li {
+  #sidebar ul li {
     list-style: none;
     padding: 0;
   }
@@ -349,7 +354,7 @@ p {
     right: 80px;
     top: 60px;  
   }
-  .sidebar ul li.actual {
+  #sidebar ul li.actual {
     font-weight: bold;
   }
   .li {

@@ -23,12 +23,12 @@
           <p>A contuniación menciono algunos de los lenguajes de programación y tecnologias de desarrollo web que he practicado:  </p>
           <ul>
             <li>DevC: C++</li>
-            <li>VSCode: HTML, CSS, JavaScript, Phyton</li>
+            <li>VSCode: HTML, CSS, JavaScript, Python</li>
             <li>CCS C Compiler: C (microcontroladores PIC)</li>
             <li>Matlab y Simulink	Texnicenter: LaTeX</li>
             <li>Netbeans: Java, Spring-boot</li>
             <li>Git y Github</li>
-            <li>Boostrap</li>
+            <li>Bootstrap</li>
             <li>MySQL</li>
             <li>MongoDB</li>
             <li>Angular</li>
@@ -76,6 +76,7 @@
     margin:0;
     background-color: $p1;
     left: 40px;
+    transition: left 250ms ease;
     padding-right: 40px;
     transition: all 250ms linear;
     height: 100vh;
@@ -121,6 +122,7 @@
 
     &.active {
         left: 200px;
+        transition: left 250ms ease;
         padding-right: 200px;
     }
 }

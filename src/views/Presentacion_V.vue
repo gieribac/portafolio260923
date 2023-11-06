@@ -54,6 +54,7 @@ p {
     justify-items: center;
     align-items: center;
     left: 40px;
+    transition: left 250ms ease;
     padding-right: 40px;
     
     z-index: 1;
@@ -67,6 +68,7 @@ p {
     }
     &.active {
         left: 200px;
+        transition: left 250ms ease;
         padding-right: 200px;
     }
     > div {        

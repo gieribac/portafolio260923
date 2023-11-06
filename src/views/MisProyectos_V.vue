@@ -154,8 +154,10 @@
     left: 40px;
     padding-right: 40px;
     text-align: center;
+    transition: left 250ms ease;
     &.active {
       left: 200px;
+      transition: left 250ms ease;
       padding-right: 200px;
     }
 }

@@ -298,8 +298,10 @@
   @media (min-width: $sm){
       .contenido {
         left: 0px;
+        transition: left 250ms ease;
         &.active {
           left: 180px;
+          transition: left 250ms ease;
           padding-right: 200px;
         }
       }
