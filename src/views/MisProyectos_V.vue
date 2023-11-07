@@ -128,7 +128,7 @@
         </div>
         <p>Practica algoritmica con phyton donde se pide optimización
         <a href="https://github.com/gieribac/Ejercicio_B_Phyton.git" target="_blank">
-        <br> Practica Phyton
+        <br> Practica Python
         </a>
         </p> 
       </div>

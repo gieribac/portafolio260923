@@ -1,23 +1,10 @@
 
-    $p1: #002d59;
-    $p2: #5e9fbf;
+$p1: #002d59;
+$p2: #5e9fbf;
 $s1: #999999;
 $s2: #CCCCCC;
 $a1: #F28705;
 $a2: #FFB84D;
-
-
-
-//     $p1: #003366;
-// $p2: #66AACC;
-// $s1: #999999;
-// $s2: #CCCCCC;
-// $a1: #F28705;
-// $a2: #FFB84D;
-
-
-
-
 $xs: 360px;
 $sm: 576px;
 $md: 768px;
@@ -29,7 +16,6 @@ $na2: 1.2;
 
 @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
 $domine: 'Domine', serif;
-
 
 @function calcular-ancho-contenedor($ancho) {
     $ancho-contenedor: calc($ancho / $na);
